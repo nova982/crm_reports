@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>오프린트미 1분기 결산 CRM 성과 대시보드</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+  .card-shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04); }
+  .gradient-vip   { background: linear-gradient(135deg, #FFE8B0 0%, #FFB86F 100%); }
+  .gradient-gold  { background: linear-gradient(135deg, #FFF3D6 0%, #F1C57A 100%); }
+  .gradient-silver{ background: linear-gradient(135deg, #E8F0FF 0%, #B6CCFF 100%); }
+  .gradient-total { background: linear-gradient(135deg, #1E1B3A 0%, #2E2A5C 100%); }
+  .tabular { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-[#F7F7FB] text-slate-900">
+
+<div class="max-w-[1400px] mx-auto px-6 py-10">
+
+  <!-- 헤더 -->
+  <header class="mb-10">
+    <div class="flex items-baseline justify-between flex-wrap gap-4">
+      <div>
+        <p class="text-sm font-semibold text-violet-600 tracking-wider uppercase mb-2">Offprintme · CRM Performance Report</p>
+        <h1 class="text-4xl font-black text-slate-900 leading-tight">오프린트미 1분기 결산 CRM 성과</h1>
+      </div>
+      <div class="text-right">
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Campaign Period</p>
+        <p class="text-lg font-bold text-slate-700 tabular">2026.04.22 — 04.29</p>
+      </div>
+    </div>
+    <div class="mt-4 flex gap-2 flex-wrap">
+      <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600">실결제 = 쿠폰적용상품단가 − 할인</span>
+      <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600">국내 KR · 6개 쿠폰</span>
+      <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-600">3개 등급(VIP/Gold/Silver)</span>
+    </div>
+  </header>
+
+  <!-- 헤드라인 KPI -->
+  <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+    <div class="gradient-total rounded-2xl p-6 text-white card-shadow">
+      <p class="text-xs font-semibold uppercase tracking-wider opacity-70">총 사용 주문</p>
+      <p class="text-4xl font-black mt-2 tabular">2,425<span class="text-base font-semibold opacity-60 ml-1">건</span></p>
+      <p class="text-xs mt-2 opacity-70">VIP 1,367 · Gold 911 · Silver 147</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">총 실결제</p>
+      <p class="text-4xl font-black mt-2 text-slate-900 tabular">₩71.6<span class="text-lg font-bold text-slate-400 ml-1">M</span></p>
+      <p class="text-xs mt-2 text-slate-500">쿠폰이 직접 만든 매출</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">총 할인</p>
+      <p class="text-4xl font-black mt-2 text-rose-600 tabular">₩14.8<span class="text-lg font-bold text-rose-300 ml-1">M</span></p>
+      <p class="text-xs mt-2 text-slate-500">집행 비용</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 card-shadow border-2 border-emerald-300">
+      <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">할인 1원당 실결제</p>
+      <p class="text-4xl font-black mt-2 text-emerald-600 tabular">₩4.84</p>
+      <p class="text-xs mt-2 text-emerald-700 font-semibold">ROI 484% · 양호</p>
+    </div>
+  </section>
+
+  <!-- 등급별 성과 -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3">
+      <span class="w-1 h-7 bg-violet-500 rounded-full"></span>
+      등급별 합산 성과
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- VIP -->
+      <div class="rounded-2xl p-6 card-shadow border border-amber-200 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500"></div>
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-bold text-amber-600 uppercase tracking-wider">Tier 1</p>
+            <p class="text-2xl font-black text-slate-900">👑 VIP</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold">73.4%</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div><p class="text-xs text-slate-500">사용수</p><p class="font-bold text-slate-900 tabular text-lg">1,367건</p></div>
+          <div><p class="text-xs text-slate-500">실결제</p><p class="font-bold text-amber-600 tabular text-lg">₩52.6M</p></div>
+          <div><p class="text-xs text-slate-500">할인</p><p class="font-bold text-slate-700 tabular">₩11.84M</p></div>
+          <div><p class="text-xs text-slate-500">ROI</p><p class="font-bold text-slate-900 tabular">₩4.44</p></div>
+        </div>
+      </div>
+      <!-- Gold -->
+      <div class="rounded-2xl p-6 card-shadow border border-yellow-200 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-bold text-yellow-700 uppercase tracking-wider">Tier 2</p>
+            <p class="text-2xl font-black text-slate-900">🏆 Gold</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-xs font-bold">23.8%</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div><p class="text-xs text-slate-500">사용수</p><p class="font-bold text-slate-900 tabular text-lg">911건</p></div>
+          <div><p class="text-xs text-slate-500">실결제</p><p class="font-bold text-yellow-700 tabular text-lg">₩17.1M</p></div>
+          <div><p class="text-xs text-slate-500">할인</p><p class="font-bold text-slate-700 tabular">₩2.79M</p></div>
+          <div><p class="text-xs text-slate-500">ROI</p><p class="font-bold text-slate-900 tabular">₩6.11</p></div>
+        </div>
+      </div>
+      <!-- Silver -->
+      <div class="rounded-2xl p-6 card-shadow border border-blue-200 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tier 3</p>
+            <p class="text-2xl font-black text-slate-900">💫 Silver</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">2.8%</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div><p class="text-xs text-slate-500">사용수</p><p class="font-bold text-slate-900 tabular text-lg">147건</p></div>
+          <div><p class="text-xs text-slate-500">실결제</p><p class="font-bold text-blue-700 tabular text-lg">₩2.0M</p></div>
+          <div><p class="text-xs text-slate-500">할인</p><p class="font-bold text-slate-700 tabular">₩178K</p></div>
+          <div><p class="text-xs text-slate-500">ROI</p><p class="font-bold text-emerald-600 tabular">₩11.17 ⭐</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 px-4 py-3 bg-emerald-50 border-l-4 border-emerald-400 rounded-r-lg">
+      <p class="text-sm text-emerald-900"><span class="font-bold">💡 포인트:</span> 할인 효율(ROI)은 등급이 낮을수록 높음 — Silver는 할인 1원당 ₩11.17 매출. 모수 확대 시 효율 극대화 가능</p>
+    </div>
+  </section>
+
+  <!-- 쿠폰별 차트 -->
+  <section class="mb-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+      <h3 class="text-lg font-extrabold mb-4">쿠폰별 사용 수</h3>
+      <div style="height:340px"><canvas id="usageChart"></canvas></div>
+    </div>
+    <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+      <h3 class="text-lg font-extrabold mb-4">쿠폰별 실결제 매출 (₩)</h3>
+      <div style="height:340px"><canvas id="revenueChart"></canvas></div>
+    </div>
+  </section>
+
+  <!-- 장바구니 vs 정률 -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3">
+      <span class="w-1 h-7 bg-violet-500 rounded-full"></span>
+      장바구니 정액(₩) vs 전상품 정률(%) 비교
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100 lg:col-span-2">
+        <div style="height:280px"><canvas id="cartVsPctChart"></canvas></div>
+      </div>
+      <div class="space-y-3">
+        <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-3 h-3 bg-violet-500 rounded-full"></span>
+            <p class="text-sm font-bold text-slate-700">전상품 정률 (%)</p>
+          </div>
+          <p class="text-2xl font-black tabular">2,317<span class="text-sm font-bold text-slate-500 ml-1">건 사용</span></p>
+          <p class="text-xs text-slate-500 mt-1">실결제 ₩60.3M · AOV ₩54K</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+            <p class="text-sm font-bold text-slate-700">장바구니 정액 (₩)</p>
+          </div>
+          <p class="text-2xl font-black tabular">108<span class="text-sm font-bold text-slate-500 ml-1">건 사용</span></p>
+          <p class="text-xs text-slate-500 mt-1">실결제 ₩11.3M · AOV ₩114K <span class="text-emerald-600 font-bold">2.1×</span></p>
+        </div>
+        <div class="bg-violet-50 rounded-2xl p-5 border-l-4 border-violet-500">
+          <p class="text-xs font-bold text-violet-700 uppercase mb-1">Insight</p>
+          <p class="text-sm text-slate-800 leading-relaxed">정률은 <span class="font-bold">사용 빈도 21.5×</span>, 정액은 <span class="font-bold">객단가 2.1×</span> — 역할 명확히 분담</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 발행·등록·사용 퍼널 -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3">
+      <span class="w-1 h-7 bg-violet-500 rounded-full"></span>
+      쿠폰 발행 → 등록 → 사용 퍼널 (사용률)
+    </h2>
+    <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+      <div style="height:340px"><canvas id="funnelChart"></canvas></div>
+    </div>
+  </section>
+
+  <!-- 상세 테이블 -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3">
+      <span class="w-1 h-7 bg-violet-500 rounded-full"></span>
+      쿠폰별 상세 데이터
+    </h2>
+    <div class="bg-white rounded-2xl card-shadow border border-slate-100 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm tabular">
+          <thead class="bg-slate-50 border-b border-slate-200">
+            <tr class="text-left">
+              <th class="px-4 py-3 font-bold text-slate-700">쿠폰</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">발행</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">등록</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">사용</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">사용률</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">할인액</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">주문금액</th>
+              <th class="px-4 py-3 font-bold text-slate-700 text-right">실결제</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr class="hover:bg-amber-50/40">
+              <td class="px-4 py-3 font-semibold">👑 장바구니 15,000원</td>
+              <td class="px-4 py-3 text-right">12,631</td>
+              <td class="px-4 py-3 text-right">12,542</td>
+              <td class="px-4 py-3 text-right font-bold">47</td>
+              <td class="px-4 py-3 text-right text-slate-500">0.37%</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩705,000</td>
+              <td class="px-4 py-3 text-right">₩8,754,930</td>
+              <td class="px-4 py-3 text-right font-bold text-amber-700">₩8,049,930</td>
+            </tr>
+            <tr class="bg-amber-50/30 hover:bg-amber-50/60">
+              <td class="px-4 py-3 font-semibold">👑 전상품 20%</td>
+              <td class="px-4 py-3 text-right">12,631</td>
+              <td class="px-4 py-3 text-right">12,629</td>
+              <td class="px-4 py-3 text-right font-bold">1,320</td>
+              <td class="px-4 py-3 text-right text-emerald-600 font-bold">10.45% ⭐</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩11,135,194</td>
+              <td class="px-4 py-3 text-right">₩92,934,030</td>
+              <td class="px-4 py-3 text-right font-bold text-amber-700">₩44,540,776</td>
+            </tr>
+            <tr class="hover:bg-yellow-50/40">
+              <td class="px-4 py-3 font-semibold">🏆 장바구니 5,000원</td>
+              <td class="px-4 py-3 text-right">43,807<span class="text-xs text-rose-500 ml-1">⚠</span></td>
+              <td class="px-4 py-3 text-right">21,850</td>
+              <td class="px-4 py-3 text-right font-bold">53</td>
+              <td class="px-4 py-3 text-right text-slate-500">0.24%</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩265,000</td>
+              <td class="px-4 py-3 text-right">₩2,993,760</td>
+              <td class="px-4 py-3 text-right font-bold text-yellow-700">₩2,728,760</td>
+            </tr>
+            <tr class="hover:bg-yellow-50/40">
+              <td class="px-4 py-3 font-semibold">🏆 전상품 15%</td>
+              <td class="px-4 py-3 text-right">21,904</td>
+              <td class="px-4 py-3 text-right">21,904</td>
+              <td class="px-4 py-3 text-right font-bold">858</td>
+              <td class="px-4 py-3 text-right">3.92%</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩2,528,410</td>
+              <td class="px-4 py-3 text-right">₩29,057,680</td>
+              <td class="px-4 py-3 text-right font-bold text-yellow-700">₩14,328,010</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">💫 장바구니 2,000원</td>
+              <td class="px-4 py-3 text-right">6,971</td>
+              <td class="px-4 py-3 text-right">6,929</td>
+              <td class="px-4 py-3 text-right font-bold">8</td>
+              <td class="px-4 py-3 text-right text-slate-500">0.12%</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩16,000</td>
+              <td class="px-4 py-3 text-right">₩547,560</td>
+              <td class="px-4 py-3 text-right font-bold text-blue-700">₩531,560</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">💫 전상품 10%</td>
+              <td class="px-4 py-3 text-right">6,971</td>
+              <td class="px-4 py-3 text-right">6,914</td>
+              <td class="px-4 py-3 text-right font-bold">139</td>
+              <td class="px-4 py-3 text-right">2.01%</td>
+              <td class="px-4 py-3 text-right text-rose-600">₩162,404</td>
+              <td class="px-4 py-3 text-right">₩3,155,070</td>
+              <td class="px-4 py-3 text-right font-bold text-blue-700">₩1,461,636</td>
+            </tr>
+          </tbody>
+          <tfoot class="bg-slate-900 text-white font-bold">
+            <tr>
+              <td class="px-4 py-3">합계</td>
+              <td class="px-4 py-3 text-right">—</td>
+              <td class="px-4 py-3 text-right">—</td>
+              <td class="px-4 py-3 text-right">2,425</td>
+              <td class="px-4 py-3 text-right">—</td>
+              <td class="px-4 py-3 text-right text-rose-300">₩14,812,008</td>
+              <td class="px-4 py-3 text-right">₩137,443,030</td>
+              <td class="px-4 py-3 text-right text-emerald-300">₩71,640,672</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="px-4 py-2 text-xs text-slate-500 bg-slate-50 border-t">⚠ Gold 장바구니 5K 발행수 43,807 — 다른 Gold 쿠폰(21,904)의 약 2배. 이중 적재 또는 별도 발행 풀 가능성, 데이터팀 확인 권장</p>
+    </div>
+  </section>
+
+  <!-- 액션 아이템 -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-extrabold mb-6 flex items-center gap-3">
+      <span class="w-1 h-7 bg-violet-500 rounded-full"></span>
+      액션 아이템
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+        <p class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">KEEP</p>
+        <p class="font-bold text-slate-900 mb-1">👑 VIP 전상품 20% 메인 슬롯 유지</p>
+        <p class="text-sm text-slate-600">단독으로 실결제 ₩44.5M(전체 62.2%)·사용률 10.45% 달성. 차기 캠페인 핵심 무기로 고정</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+        <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">EXPAND</p>
+        <p class="font-bold text-slate-900 mb-1">💫 Silver 모수 확대</p>
+        <p class="text-sm text-slate-600">할인 효율 ₩11.17 — 가장 높음. 등급 임계치 인하 또는 입문 캠페인으로 풀 확대</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+        <p class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-2">REVIEW</p>
+        <p class="font-bold text-slate-900 mb-1">🏆 Gold 장바구니 5K 폐지/임계치 인상</p>
+        <p class="text-sm text-slate-600">사용률 0.24%로 가장 저조. ₩30K 이상 구매 시 5K 할인 등 임계치 도입 검토</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow border border-slate-100">
+        <p class="text-xs font-bold text-violet-600 uppercase tracking-wider mb-2">TRACK</p>
+        <p class="font-bold text-slate-900 mb-1">장바구니 쿠폰 사용 108명 별도 트래킹</p>
+        <p class="text-sm text-slate-600">객단가 ₩113.9K의 우수 유저. VIP 후보 또는 LTV 분석 표적</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-10 pt-6 border-t border-slate-200 text-xs text-slate-500 text-center">
+    Data: 사용자 제공 쿠폰 발급·사용 데이터 · 실결제 = 쿠폰적용상품단가 − 할인 (장바구니는 주문금액 − 할인) · Generated 2026-04-30
+  </footer>
+
+</div>
+
+<script>
+const palette = {
+  vip: '#F59E0B', vipL: '#FCD34D',
+  gold: '#CA8A04', goldL: '#FDE68A',
+  silver: '#3B82F6', silverL: '#93C5FD',
+  cart: '#F97316', pct: '#7C3AED'
+};
+Chart.defaults.font.family = "'Pretendard', sans-serif";
+Chart.defaults.color = '#475569';
+
+// 1) 쿠폰별 사용수 (가로 바)
+new Chart(document.getElementById('usageChart'), {
+  type: 'bar',
+  data: {
+    labels: ['👑 전상품 20%', '🏆 전상품 15%', '💫 전상품 10%', '🏆 장바구니 5K', '👑 장바구니 15K', '💫 장바구니 2K'],
+    datasets: [{
+      data: [1320, 858, 139, 53, 47, 8],
+      backgroundColor: [palette.vip, palette.gold, palette.silver, palette.goldL, palette.vipL, palette.silverL],
+      borderRadius: 6, borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y', maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (c) => c.parsed.x.toLocaleString() + '건' } }
+    },
+    scales: {
+      x: { grid: { color: '#F1F5F9' }, ticks: { font: { size: 11 } } },
+      y: { grid: { display: false }, ticks: { font: { size: 12, weight: 600 } } }
+    }
+  }
+});
+
+// 2) 쿠폰별 실결제 매출
+new Chart(document.getElementById('revenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['👑 전상품 20%', '🏆 전상품 15%', '👑 장바구니 15K', '🏆 장바구니 5K', '💫 전상품 10%', '💫 장바구니 2K'],
+    datasets: [{
+      data: [44540776, 14328010, 8049930, 2728760, 1461636, 531560],
+      backgroundColor: [palette.vip, palette.gold, palette.vipL, palette.goldL, palette.silver, palette.silverL],
+      borderRadius: 6, borderSkipped: false
+    }]
+  },
+  options: {
+    indexAxis: 'y', maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: (c) => '₩' + c.parsed.x.toLocaleString() } }
+    },
+    scales: {
+      x: { grid: { color: '#F1F5F9' }, ticks: { font: { size: 11 }, callback: (v) => '₩' + (v/1000000).toFixed(0) + 'M' } },
+      y: { grid: { display: false }, ticks: { font: { size: 12, weight: 600 } } }
+    }
+  }
+});
+
+// 3) 장바구니 vs 정률 — 4지표 비교 (정규화)
+new Chart(document.getElementById('cartVsPctChart'), {
+  type: 'bar',
+  data: {
+    labels: ['사용 수 (건)', '실결제 (₩M)', '할인액 (₩M)', 'AOV (₩K)'],
+    datasets: [
+      {
+        label: '전상품 정률 (%)',
+        data: [2317, 60.3, 13.83, 54],
+        backgroundColor: palette.pct, borderRadius: 6
+      },
+      {
+        label: '장바구니 정액 (₩)',
+        data: [108, 11.3, 0.99, 114],
+        backgroundColor: palette.cart, borderRadius: 6
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12, weight: 600 }, boxWidth: 14, boxHeight: 14, padding: 16 } },
+      tooltip: {
+        callbacks: {
+          label: (c) => {
+            const labels = ['건', '₩M', '₩M', '₩K'];
+            return c.dataset.label + ': ' + c.parsed.y.toLocaleString() + labels[c.dataIndex];
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 12, weight: 600 } } },
+      y: { type: 'logarithmic', grid: { color: '#F1F5F9' }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+// 4) 쿠폰별 사용률 (Funnel = 사용/등록 %)
+new Chart(document.getElementById('funnelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['👑 전상품 20%', '🏆 전상품 15%', '💫 전상품 10%', '👑 장바구니 15K', '🏆 장바구니 5K', '💫 장바구니 2K'],
+    datasets: [
+      {
+        label: '등록 수',
+        data: [12629, 21904, 6914, 12542, 21850, 6929],
+        backgroundColor: '#E2E8F0', borderRadius: 4
+      },
+      {
+        label: '사용 수',
+        data: [1320, 858, 139, 47, 53, 8],
+        backgroundColor: palette.pct, borderRadius: 4
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { font: { size: 12, weight: 600 }, boxWidth: 14, boxHeight: 14, padding: 16 } },
+      tooltip: {
+        callbacks: {
+          afterLabel: (c) => {
+            if (c.datasetIndex === 1) {
+              const reg = c.chart.data.datasets[0].data[c.dataIndex];
+              const rate = (c.parsed.y / reg * 100).toFixed(2);
+              return '사용률: ' + rate + '%';
+            }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11, weight: 600 } } },
+      y: { grid: { color: '#F1F5F9' }, ticks: { font: { size: 11 }, callback: (v) => v.toLocaleString() } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
